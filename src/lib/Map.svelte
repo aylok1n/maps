@@ -1,5 +1,10 @@
 <script lang="ts">
-  import mapboxgl from "mapbox-gl";
+  import {
+    Map,
+    GeolocateControl,
+    NavigationControl,
+    FullscreenControl,
+  } from "mapbox-gl";
   import { onMount } from "svelte";
   import { get } from "svelte/store";
   import isDarkTheme from "../stores/theme";
@@ -8,15 +13,19 @@
   const { VITE_MAPBOX_ACCESS_TOKEN, VITE_MAP_LIGHT_URL, VITE_MAP_DARK_URL } =
     import.meta.env;
 
-  let map: mapboxgl.Map | null = null;
+  let map: Map | null = null;
   onMount(() => {
-    map = new mapboxgl.Map({
+    map = new Map({
       container: "__next",
       style: get(isDarkTheme) ? VITE_MAP_DARK_URL : VITE_MAP_LIGHT_URL,
       accessToken: VITE_MAPBOX_ACCESS_TOKEN,
       center: [37.617633, 55.75582],
       zoom: 11,
-    });
+      attributionControl: false,
+    })
+      .addControl(new NavigationControl({ showCompass: false }))
+      .addControl(new GeolocateControl())
+      .addControl(new FullscreenControl());
   });
 
   isDarkTheme.subscribe((value: boolean) => {

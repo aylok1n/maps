@@ -28,7 +28,7 @@
 
   .switch-wrapper {
     position: absolute;
-    right: 40px;
+    left: 40px;
     top: 20px;
     z-index: 2;
   }
