@@ -9,6 +9,8 @@
   import { get } from "svelte/store";
   import isDarkTheme from "../stores/theme";
   import "mapbox-gl/dist/mapbox-gl.css";
+  import { getExits } from "../api/exits";
+  import mapObjects from "../stores/mapObjects";
 
   const { VITE_MAPBOX_ACCESS_TOKEN, VITE_MAP_LIGHT_URL, VITE_MAP_DARK_URL } =
     import.meta.env;
@@ -26,7 +28,11 @@
       .addControl(new NavigationControl({ showCompass: false }))
       .addControl(new GeolocateControl())
       .addControl(new FullscreenControl());
+
+    getExits();
   });
+
+  console.log($mapObjects);
 
   isDarkTheme.subscribe((value: boolean) => {
     const newTheme = value ? VITE_MAP_DARK_URL : VITE_MAP_LIGHT_URL;
