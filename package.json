@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "mapbox-gl": "^2.8.2"
+    "mapbox-gl": "^2.8.2",
+    "svelte-simple-accordion": "^1.1.0"
   }
 }

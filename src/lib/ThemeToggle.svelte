@@ -27,9 +27,8 @@
   }
 
   .switch-wrapper {
-    position: absolute;
-    left: 40px;
-    top: 20px;
+    padding-left: 20px;
+    position: relative;
     z-index: 2;
   }
 
@@ -38,10 +37,6 @@
   }
 
   .switch-control {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
     transform: translate(-50%, -50%);
     display: inline-block;
     width: 60px;

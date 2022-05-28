@@ -1,11 +1,11 @@
 <script lang="ts">
   import Map from "./lib/Map.svelte";
-  import ThemeToggle from "./lib/ThemeToggle.svelte";
+  import SideBar from "./lib/SideBar.svelte";
 </script>
 
 <div>
-  <ThemeToggle />
   <Map />
+  <SideBar/>
 </div>
 
 <style>
