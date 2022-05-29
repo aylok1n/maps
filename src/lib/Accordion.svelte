@@ -1,34 +1,35 @@
 <script>
+    import MenuItem from "./MenuItem.svelte";
     import { Accordion, AccordionItem } from "svelte-simple-accordion";
     export let title = "Нет данных";
     export let data = [];
 
     const getItemIndex = (item, attributeName) => {
-        return item.getAttribute(attributeName)
+        return item.getAttribute(attributeName);
     };
 
     const handleItemClicked = (event) => {
-        const accordion = event.detail.accordion
-        const attributeName = event.detail.itemIndexAttributeName
-        const itemTitle = event.detail.itemTitle
-        const opened = event.detail.opened
+        const accordion = event.detail.accordion;
+        const attributeName = event.detail.itemIndexAttributeName;
+        const itemTitle = event.detail.itemTitle;
+        const opened = event.detail.opened;
         accordion
             .querySelectorAll("[" + attributeName + "]")
             .forEach((element) => {
-                const title = element.querySelector(".item-title")
-                const icon = title.querySelector(".status")
+                const title = element.querySelector(".item-title");
+                const icon = title.querySelector(".status");
                 const clicked =
                     getItemIndex(itemTitle, attributeName) ===
                     getItemIndex(element, attributeName);
-                const toOpen = clicked && opened
+                const toOpen = clicked && opened;
                 if (toOpen) {
-                    title.classList.remove("hide")
-                    icon.classList.remove("fa-chevron-down")
-                    icon.classList.add("fa-chevron-up")
+                    title.classList.remove("hide");
+                    icon.classList.remove("fa-chevron-down");
+                    icon.classList.add("fa-chevron-up");
                 } else {
-                    title.classList.add("hide")
-                    icon.classList.remove("fa-chevron-up")
-                    icon.classList.add("fa-chevron-down")
+                    title.classList.add("hide");
+                    icon.classList.remove("fa-chevron-up");
+                    icon.classList.add("fa-chevron-down");
                 }
             });
     };
@@ -42,7 +43,11 @@
                     <div class="item-title">
                         <p class="item-title-label">
                             <span class="checkbox-outside">
-                                <input class="checkbox" type="checkbox" on:click={e => e.stopPropagation()} />
+                                <input
+                                    class="checkbox"
+                                    type="checkbox"
+                                    on:click={(e) => e.stopPropagation()}
+                                />
                             </span>
                             {title}
                         </p>
@@ -51,9 +56,7 @@
                 </div>
                 <div slot="content" class="item-content">
                     {#each data as item}
-                        <div class="flex-row-left accordion-item">
-                            <p>{item.text}</p>
-                        </div>
+                        <MenuItem text={item.text} />
                     {/each}
                 </div>
             </AccordionItem>
@@ -66,7 +69,7 @@
         cursor: pointer;
     }
     .checkbox:before {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 50%;
@@ -78,7 +81,7 @@
         background-color: white;
     }
     .checkbox:checked:after {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 50%;
@@ -104,12 +107,5 @@
     p {
         margin: 0;
         padding: 0;
-    }
-    .accordion-item {
-        margin: 5px 0;
-        margin-left: 26px;
-        padding-left: 6px;
-        word-wrap: break-word;
-        border-left: 3px solid red;
     }
 </style>
