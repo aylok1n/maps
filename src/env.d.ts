@@ -5,6 +5,7 @@ interface ImportMetaEnv {
   readonly VITE_BASE_URL: string;
   readonly VITE_MAP_LIGHT_URL: string;
   readonly VITE_MAP_DARK_URL: string;
+  readonly VITE_MAPS_APIKEY: string;
 }
 
 interface ImportMeta {

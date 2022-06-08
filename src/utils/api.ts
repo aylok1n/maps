@@ -1,4 +1,4 @@
-import Axios,{ AxiosError, AxiosInstance, AxiosRequestHeaders, AxiosResponse, Method } from "axios";
+import Axios, { AxiosError, AxiosInstance, AxiosRequestHeaders, AxiosResponse, Method } from "axios";
 
 interface APIInterface {
   method: Method;
@@ -8,7 +8,8 @@ interface APIInterface {
 }
 
 export const axios: AxiosInstance = Axios.create({
-  baseURL: `${import.meta.env.VITE_BASE_URL}/api`,
+  baseURL: `${import.meta.env.VITE_BASE_URL}`,
+  params: new URLSearchParams({ api_key: import.meta.env.VITE_MAPS_APIKEY }),
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

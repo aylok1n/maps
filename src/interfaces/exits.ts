@@ -1,7 +1,32 @@
+interface ExitGeometry {
+  coordinates: [number, number]
+  type: "Point"
+}
 
-export type Exit = any
+interface ExitPropertiesAtributes {
+  AdmArea: null
+  Diameter: any[]
+  District: null
+  Latitude_WGS84: string
+  Longitude_WGS84: string
+  Name: string
+  NameMetroExit: null
+  ObjectStatus: string
+  OnTerritoryOfMoscow: string
+  TypeExit: string
+  global_id: number
+}
 
-// TODO
-// export interface Exit {
-//   ...
-// }
+interface ExitProperties {
+  Attributes: ExitPropertiesAtributes
+  DatasetId: number
+  ReleaseNumber: number
+  RowId: null
+  VersionNumber: number
+}
+
+export interface Exit {
+  geometry: ExitGeometry,
+  properties: ExitProperties,
+  type: "Feature"
+}

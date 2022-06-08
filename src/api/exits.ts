@@ -1,12 +1,11 @@
-import { setError, setExits, setLoading } from "../stores/mapObjects"
+import { setError, setExits, setLoading } from "../stores/exits"
 import { api } from "../utils/api"
 
 
 export const getExits = () => new Promise((resolve, reject) => {
   setLoading()
-  api({ method: 'GET', url: '/exits' })
+  api({ method: 'GET', url: '/v1/datasets/62207/features' })
     .then((response) => {
-      console.log(response)
       setExits(response.data.features)
       resolve(response.data.features)
     })
