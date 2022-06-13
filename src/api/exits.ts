@@ -6,8 +6,8 @@ export const getExits = () => new Promise((resolve, reject) => {
   setLoading()
   api({ method: 'GET', url: '/v1/datasets/62207/features' })
     .then((response) => {
-      setExits(response.data.features)
-      resolve(response.data.features)
+      setExits(response.data)
+      resolve(response.data)
     })
     .catch((error) => {
       setError(error)

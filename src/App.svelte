@@ -5,7 +5,7 @@
 
 <div>
   <Map />
-  <SideBar/>
+  <SideBar />
 </div>
 
 <style>

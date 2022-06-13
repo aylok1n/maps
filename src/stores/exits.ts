@@ -1,19 +1,44 @@
-import type { Exit } from "src/interfaces/exits";
+import type { AnyLayer, GeoJSONSourceRaw } from "mapbox-gl";
 import { writable } from "svelte/store";
+import type IExit from "../interfaces/exits";
 
 interface initialState {
+  source: GeoJSONSourceRaw,
+  layer: AnyLayer,
+  isShow: boolean,
   loading: boolean,
-  error: boolean,
-  data: Exit[],
+  error: any
 }
 
 const initialState: initialState = {
+  source: {
+    type: "geojson",
+    data: null,
+  },
+  layer: {
+    id: "exits-circle",
+    type: "circle",
+    source: "exits",
+
+    paint: {
+      "circle-color": "#FF0000",
+      "circle-stroke-width": 2.5,
+      "circle-stroke-color": "white",
+    },
+  },
+  isShow: true,
   loading: false,
-  error: false,
-  data: [],
+  error: null
 }
 
 const mapExits = writable<initialState>(initialState)
+
+export const toggleExits = (value?: boolean) => {
+  mapExits.update((state) => ({
+    ...state,
+    isShow: value === undefined ? !state.isShow : value
+  }))
+}
 
 export const setLoading = () => {
   mapExits.update((state) => ({
@@ -31,12 +56,12 @@ export const setError = (error: any) => {
   }))
 }
 
-export const setExits = (exits: Exit[]) => {
+export const setExits = (exits: IExit) => {
   mapExits.update((state) => ({
     ...state,
     loading: false,
     error: false,
-    data: exits
+    source: { ...state.source, data: exits as any }
   }))
 }
 

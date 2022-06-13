@@ -1,8 +1,15 @@
-<script>
+<script lang="ts">
   import MenuItem from "./MenuItem.svelte";
   import { Accordion, AccordionItem } from "svelte-simple-accordion";
-  export let title = "Нет данных";
-  export let data = [];
+
+  interface Data {
+    text: string;
+    onclick: (val?: boolean) => void;
+    value: boolean;
+  }
+
+  export let title: string = "Нет данных";
+  export let data: Data[] = [];
 
   const getItemIndex = (item, attributeName) => {
     return item.getAttribute(attributeName);
@@ -31,38 +38,59 @@
       }
     });
   };
+  let checked: boolean = true;
+  $: checked = data.some((i) => i.value);
+
+  const handleChecked = () => {
+    data.forEach((i) => {
+      if (i.value !== !checked) i.onclick(!checked);
+    });
+  };
 </script>
 
-<Accordion dispatchName="itemClicked" on:itemClicked={handleItemClicked}>
-  <div class="item">
-    <div>
-      <AccordionItem>
-        <div slot="title" class="flex-row-left hide">
-          <div class="item-title">
-            <p class="item-title-label">
-              <span class="checkbox-outside">
-                <input
-                  class="checkbox"
-                  type="checkbox"
-                  on:click={(e) => e.stopPropagation()}
-                />
-              </span>
-              {title}
-            </p>
-            <i class="status fas fa-chevron-down" />
+<div class="wrapper">
+  <span class="checkbox-outside">
+    <input
+      class="checkbox"
+      type="checkbox"
+      {checked}
+      on:change={handleChecked}
+    />
+  </span>
+  <Accordion dispatchName="itemClicked" on:itemClicked={handleItemClicked}>
+    <div class="item">
+      <div>
+        <AccordionItem>
+          <div slot="title" class="flex-row-left hide">
+            <div class="item-title">
+              <p class="item-title-label">
+                {title}
+              </p>
+              <i class="status fas fa-chevron-down" />
+            </div>
           </div>
-        </div>
-        <div slot="content" class="item-content">
-          {#each data as item}
-            <MenuItem text={item.text} />
-          {/each}
-        </div>
-      </AccordionItem>
+          <div slot="content" class="item-content">
+            {#each data as item}
+              <MenuItem
+                text={item.text}
+                value={item.value}
+                onclick={item.onclick}
+              />
+            {/each}
+          </div>
+        </AccordionItem>
+      </div>
     </div>
-  </div>
-</Accordion>
+  </Accordion>
+</div>
 
 <style>
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
   .checkbox {
     cursor: pointer;
   }

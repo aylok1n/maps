@@ -5,6 +5,7 @@ export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   return defineConfig({
-    plugins: [svelte()]
+    plugins: [svelte()],
+    base: '/maps/'
   });
 }

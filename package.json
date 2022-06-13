@@ -1,18 +1,24 @@
 {
   "name": "maps",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "deploy": "./deploy.sh",
+    "postinstall": "husky install",
+    "prepare": "husky install",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
     "@tsconfig/svelte": "^2.0.1",
     "@types/mapbox-gl": "^2.7.2",
+    "husky": "^8.0.1",
     "sass": "^1.52.1",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.7",

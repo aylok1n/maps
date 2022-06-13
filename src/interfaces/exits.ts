@@ -30,3 +30,8 @@ export interface Exit {
   properties: ExitProperties,
   type: "Feature"
 }
+
+export default interface IExit {
+  type: 'string',
+  features: Exit
+}

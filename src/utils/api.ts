@@ -10,10 +10,6 @@ interface APIInterface {
 export const axios: AxiosInstance = Axios.create({
   baseURL: `${import.meta.env.VITE_BASE_URL}`,
   params: new URLSearchParams({ api_key: import.meta.env.VITE_MAPS_APIKEY }),
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
 });
 
 export const api = ({ method, url, headers, data }: APIInterface): Promise<AxiosResponse> => (

@@ -45,3 +45,8 @@ export interface Station {
   properties: StationProperties,
   type: "Feature"
 }
+
+export default interface IStation {
+  type: 'string',
+  features: Station
+}
