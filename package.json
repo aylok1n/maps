@@ -20,7 +20,7 @@
     "@types/mapbox-gl": "^2.7.2",
     "husky": "^8.0.1",
     "sass": "^1.52.1",
-    "svelte": "^3.44.0",
+    "svelte": "^3.49.0",
     "svelte-check": "^2.2.7",
     "svelte-preprocess": "^4.9.8",
     "svelte-preprocess-sass": "^2.0.1",

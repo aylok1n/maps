@@ -920,10 +920,10 @@ svelte-simple-accordion@^1.1.0:
   resolved "https://registry.npmjs.org/svelte-simple-accordion/-/svelte-simple-accordion-1.1.0.tgz"
   integrity sha512-B5UK0XN4Oqc0t2bul66syjW0yh/vAlukat0PN9CxFkhLqHcynxm8/Ia6nffchUWjKhh0II4Nn/NdOW7MFTZKuw==
 
-svelte@^3.44.0:
-  version "3.46.6"
-  resolved "https://registry.npmjs.org/svelte/-/svelte-3.46.6.tgz"
-  integrity sha512-o9nNft/OzCz/9kJpmWa1S52GAM+huCjPIsNWydYmgei74ZWlOA9/hN9+Z12INdklghu31seEXZMRHhS1+8DETw==
+svelte@^3.49.0:
+  version "3.49.0"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.49.0.tgz#5baee3c672306de1070c3b7888fc2204e36a4029"
+  integrity sha512-+lmjic1pApJWDfPCpUUTc1m8azDqYCG1JN9YEngrx/hUyIcFJo6VZhj0A1Ai0wqoHcEIuQy+e9tk+4uDgdtsFA==
 
 tinyqueue@^2.0.3:
   version "2.0.3"
